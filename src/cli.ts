@@ -1,7 +1,7 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs'
 import * as parse from 'minimist'
 import * as nacl from 'tweetnacl'
-import { gateways } from './src/backend/IGateway'
+import { gateways } from './backend/IGateway'
 import * as log from './log'
 
 export const args = parse(process.argv.slice(2), {

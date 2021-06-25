@@ -1,7 +1,7 @@
 import { connect, Socket } from 'net'
 import { question } from 'readline-sync'
 import { SmartBuffer } from 'smart-buffer'
-import { handlePacket } from '../../client'
+import { handlePacket } from '../client'
 import { Gateway, IGateway } from './IGateway'
 
 function send(sock: Socket, meta: any, payload: Buffer = Buffer.alloc(0)) {
