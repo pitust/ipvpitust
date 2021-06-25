@@ -1,0 +1,24 @@
+{
+    "name": "ipvpitust",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@types/minimist": "^1.2.1",
+        "@types/node": "^15.12.4",
+        "@types/node-fetch": "^2.5.10",
+        "@types/readline-sync": "^1.4.3",
+        "minimist": "^1.2.5",
+        "node-fetch": "^2.6.1",
+        "node-rsa": "^1.1.1",
+        "readline-sync": "^1.4.10",
+        "smart-buffer": "^4.1.0",
+        "tweetnacl": "^1.0.3"
+    }
+}
