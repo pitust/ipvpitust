@@ -16,6 +16,9 @@ function send(sock: Socket, meta: any, payload: Buffer = Buffer.alloc(0)) {
 // dnsbounce gateway
 @Gateway('dnsbounce')
 export class DNSBounceGateway implements IGateway {
+    get canSend(): boolean {
+        return this.isAvailable
+    }
     _uri: string = null
     _sock: Socket
     selfURI(): string {

@@ -1,6 +1,7 @@
 export const gateways = new Map<string, IGateway>()
 export interface IGateway {
     get isAvailable(): boolean
+    get canSend(): boolean
     enable(): void
     selfURI(): string
     sendTo(uri: string, message: Buffer): void
