@@ -35,7 +35,7 @@ export class UDPPeerToPeerGateway implements IGateway {
         })
     }
     selfURI(): string {
-        return this._uri
+        return this._uri!
     }
     sendTo(uri: string, message: Buffer): void {
         const url = new URL(uri)

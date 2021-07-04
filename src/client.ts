@@ -8,6 +8,7 @@ import { gateways } from './backend/IGateway'
 
 import './backend/DNSBounceGateway'
 import './backend/UDPPeerToPeerGateway'
+import './backend/SignalhubGateway'
 import { info } from './log'
 
 const keypair = loadKeys()

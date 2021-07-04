@@ -3,6 +3,8 @@
         "target": "ESNext",
         "moduleResolution": "Node",
         "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": ["extra_types"],
+        "strict": true
     }
 }

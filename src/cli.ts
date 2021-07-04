@@ -32,6 +32,13 @@ if (args.help) {
     process.exit()
 }
 
+export function getSignalhubServers(): string[] {
+    if (args['signal-hub-servers']) return [args['signal-hub-server']].flat()
+    return [
+        'http://signalhub.pitust.dev:8080',
+        'https://signalhub.mafintosh.com'
+    ]
+}
 function getNatHoleHostInner(): string {
     if (args['nat-hole-host']) return args['nat-hole-host']
     return 'ipvpitust-nathole-port.pitust.dev:1234'
