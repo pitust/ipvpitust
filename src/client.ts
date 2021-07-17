@@ -25,12 +25,13 @@ function queryByLaunchid(tlaunchid: bigint): Peer {
     for (let [, peer] of pool) {
         if (peer.launchid == tlaunchid) return peer
     }
+    throw new Error('no such peer')
 }
 function createSelfpeer(gw: string) {
     selfpeer = new Peer(
         Buffer.from(keypair.publicKey),
-        Buffer.from(nacl.sign.detached(Buffer.from(gateways.get(gw).selfURI()), keypair.secretKey)),
-        gateways.get(gw).selfURI(),
+        Buffer.from(nacl.sign.detached(Buffer.from(gateways.get(gw)!.selfURI()), keypair.secretKey)),
+        gateways.get(gw)!.selfURI(),
         launchid
     )
     pool.set(Buffer.from(keypair.publicKey).toString('hex'), selfpeer)
@@ -41,7 +42,6 @@ function createSelfpeer(gw: string) {
     }
 }
 export function handlePacket(b: SmartBuffer) {
-    console.log(b.toBuffer())
     const packetid = b.readBigUInt64LE()
     const tlaunchid = b.readBigUInt64LE()
     if (tlaunchid == launchid) return
@@ -104,9 +104,9 @@ function printPeer(peer: Peer) {
     console.log(`Gateway address: ${peer.uri}`)
 }
 if (args['default-backend']) {
-    gateways.get(args['default-backend']).enable()
+    gateways.get(args['default-backend'])!.enable()
     const id = setInterval(() => {
-        if (gateways.get(args['default-backend']).isAvailable) {
+        if (gateways.get(args['default-backend'])!.isAvailable) {
             info(`Backend ${args['default-backend']} up`)
             createSelfpeer(args['default-backend'])
             clearInterval(id)
@@ -126,7 +126,7 @@ rl.on('line', answer => {
     if (answer.startsWith('tell ')) {
         const args = answer.slice(5)
         let [tgdpeer, ...msgparts] = args.split(' ')
-        const peer = pool.get(tgdpeer)
+        const peer = pool.get(tgdpeer)!
         sendTo(peer.uri, PacketFactory.newJustDataPacket(peer, Buffer.from(msgparts.join(' ')), keypair).toBuffer())
         return rl.prompt()
     }

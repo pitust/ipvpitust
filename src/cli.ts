@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, writeFileSync } from 'fs'
-import * as parse from 'minimist'
+import parse from 'minimist'
 import * as nacl from 'tweetnacl'
 import { gateways } from './backend/IGateway'
 import * as log from './log'
@@ -36,7 +36,7 @@ export function getSignalhubServers(): string[] {
     if (args['signal-hub-servers']) return [args['signal-hub-server']].flat()
     return [
         'http://signalhub.pitust.dev:8080',
-        'https://signalhub.mafintosh.com'
+        // 'https://signalhub.mafintosh.com'
     ]
 }
 function getNatHoleHostInner(): string {

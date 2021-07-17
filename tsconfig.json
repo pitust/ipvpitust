@@ -5,6 +5,7 @@
         "experimentalDecorators": true,
         "allowSyntheticDefaultImports": true,
         "typeRoots": ["extra_types"],
-        "strict": true
+        "strict": true,
+        "esModuleInterop": true
     }
 }
